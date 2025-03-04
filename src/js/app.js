@@ -1,24 +1,22 @@
-/* eslint-disable no-console */
 import {
   catchError, of, interval, mergeMap,
 } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import CreateNewMessage from './CreateNewMessage';
 
-import background from '../img/cell.jpg';
-
-document.querySelector('body').style.backgroundImage = `url(${background})`;
-
 const mailBox = document.querySelector('.container-mail');
+
+const apiUrl = 'http://localhost:9000/messages/unread';
 
 const messageView = new CreateNewMessage(mailBox);
 
 const messagesIds = new Set();
 const messages$ = interval(1000)
   .pipe(
-    mergeMap(() => ajax.getJSON('https://polling-backend-j6xa.onrender.com/messages/unread')
+    mergeMap(() => ajax.getJSON(apiUrl)
       .pipe(
         catchError((error) => {
+          // eslint-disable-next-line no-console
           console.log('error: ', error);
           return of(null);
         }),
@@ -42,5 +40,6 @@ messages$
         messageView.renderMessage(message);
       }
     },
+    // eslint-disable-next-line no-console
     error: (err) => console.log(err),
   });
