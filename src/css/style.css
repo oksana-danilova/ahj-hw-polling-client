@@ -1,0 +1,55 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+
+p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+li {
+    display: inline-flex;
+    align-items: center;
+    width: 250px;
+}
+
+.title {
+    font-size: 20px;
+}
+
+.app-container {
+    margin: 100px;
+}
+
+.container-mail {
+    width: 800px;
+    margin-top: 10px;
+}
+
+.list-message {
+    padding: 10px;
+    background-color: #fff;
+    border: #333 solid 2px;
+    border-top: none;
+}
+
+.container-mail:not(.first-item) {
+    border-top: #333 solid 2px;
+}
